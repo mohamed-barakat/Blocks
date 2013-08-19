@@ -6,23 +6,15 @@
 
 LoadPackage( "AutoDoc" );
 
-CreateAutomaticDocumentation( "Blocks", "gap/AutoDocEntries.g", "doc/", false );
-
-LoadPackage( "Modules" );
-
-SetGapDocLaTeXOptions( "utf8" );
-
-bib := ParseBibFiles( "doc/Blocks.bib" );
-WriteBibXMLextFile( "doc/BlocksBib.xml", bib );
-
-Read( "ListOfDocFiles.g" );
-
 PrintTo( "VERSION", PackageInfo( "Blocks" )[1].Version );
 
-MakeGAPDocDoc( "doc", "Blocks", list, "Blocks", "MathJax" );
+ bib := ParseBibFiles( "doc/Blocks.bib" );
+ WriteBibXMLextFile( "doc/BlocksBib.xml", bib );
 
-CopyHTMLStyleFiles( "doc" );
+AutoDoc( "Blocks",
+	rec( scaffold := false,
+	     autodoc := true,
+             gapdoc := true ) );
 
-GAPDocManualLab( "Blocks" );
 
 QUIT;
