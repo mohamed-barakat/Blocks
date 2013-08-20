@@ -17,4 +17,3 @@ AutoDoc( "Blocks",
              gapdoc := true ) );
 
 
-QUIT;
