@@ -5,7 +5,7 @@ PackageName := "Blocks",
 Subtitle := "Tools for block theory",
 
 Version := Maximum( [
-                   "2013.07.06", ## Mohamed's version
+                   "2013.08.20", ## Mohamed's version
                    ## this line prevents merge conflicts
                    ] ),
 
@@ -56,7 +56,7 @@ PackageDoc := rec(
 Dependencies := rec(
   GAP := ">=4.4",
   NeededOtherPackages := [
-                   [ "AutoDoc", ">= 2013.08.08.20:20" ],
+                   [ "AutoDoc", ">= 2013.08.19" ],
                    [ "Modules", ">= 2013.07.05" ],
                    [ "LAGUNA", ">= 3.6.3" ],
                    [ "GAPDoc", ">= 1.1" ]
