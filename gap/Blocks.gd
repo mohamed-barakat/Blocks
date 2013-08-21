@@ -34,7 +34,7 @@ DeclareGlobalVariable( "BLOCKS" );
 #!  Computes the list of defects of the <A>p</A>-blocks of the group <A>G</A>
 #!  with <A>p</A>-modular character table <A>modtbl</A>
 #!  and underlying ordinary character table <A>ordtbl</A>.
-#! @ReturnValue a list
+#! @Returns a list
 #! @Arguments modtbl
 #! @Group DefectsOfBlocks
 DeclareAttribute( "DefectsOfBlocks",
@@ -45,7 +45,7 @@ DeclareAttribute( "DefectsOfBlocks",
 #!  associated to the <A>p</A>-blocks of the group <A>G</A>
 #!  with <A>p</A>-modular character table <A>modtbl</A>
 #!  and underlying ordinary character table <A>ordtbl</A>.
-#! @ReturnValue a list
+#! @Returns a list
 #! @Arguments modtbl
 #! @Group CharacterDegreesOfBlocks
 DeclareAttribute( "CharacterDegreesOfBlocks",
@@ -56,7 +56,7 @@ DeclareAttribute( "CharacterDegreesOfBlocks",
 #!  associated to the <A>p</A>-blocks of the group <A>G</A>
 #!  with <A>p</A>-modular character table <A>modtbl</A>
 #!  and underlying ordinary character table <A>ordtbl</A>.
-#! @ReturnValue a list
+#! @Returns a list
 #! @Arguments modtbl
 #! @Group BrauerCharacterDegreesOfBlocks"
 DeclareAttribute( "BrauerCharacterDegreesOfBlocks",
@@ -66,7 +66,7 @@ DeclareAttribute( "BrauerCharacterDegreesOfBlocks",
 #!  Computes the list of Cartan matrices of the <A>p</A>-blocks of the group <A>G</A>
 #!  with <A>p</A>-modular character table <A>modtbl</A>
 #!  and underlying ordinary character table <A>ordtbl</A>.
-#! @ReturnValue a list
+#! @Returns a list
 #! @Arguments modtbl
 #! @Group CartanMatricesOfBlocks
 DeclareAttribute( "CartanMatricesOfBlocks",
@@ -76,7 +76,7 @@ DeclareAttribute( "CartanMatricesOfBlocks",
 #!  Computes the central character for each <A>p</A>-block of the group <A>G</A>
 #!  with <A>p</A>-modular character table <A>modtbl</A>
 #!  and underlying ordinary character table <A>ordtbl</A>
-#! @ReturnValue a list
+#! @Returns a list
 #! @Arguments modtbl
 #! @Group CentralCharactersOfBlocks
 DeclareAttribute( "CentralCharactersOfBlocks",
@@ -88,7 +88,7 @@ DeclareAttribute( "CentralCharactersOfBlocks",
 #!  with <A>p</A>-modular character table <M>modtbl</M>
 #!  the corresponding record in <C>BlocksInfo</C>(<M>modtbl</M>)
 #!  (&see; <Ref Attr="BlocksInfo" BookName="Reference"/>).
-#! @ReturnValue a record
+#! @Returns a record
 #! @Arguments b
 #! @Group BlockIdempotentInfo
 DeclareAttribute( "BlockIdempotentInfo",
@@ -105,7 +105,7 @@ DeclareAttribute( "BlockIdempotentInfo",
 
 #! Section headline
 
-#! @ReturnValue a list
+#! @Returns a list
 #! @Arguments ordtbl, p
 #! @Group DefectsOfBlocks
 DeclareOperation( "DefectsOfBlocks",
@@ -113,13 +113,13 @@ DeclareOperation( "DefectsOfBlocks",
 
 #! @Description
 #!  <#Include Label="DefectsOfBlocks">
-#! @ReturnValue a list
+#! @Returns a list
 #! @Arguments G, p
 #! @Group DefectsOfBlocks
 DeclareOperation( "DefectsOfBlocks",
         [ IsGroup, IsInt ] );
 
-#! @ReturnValue a list
+#! @Returns a list
 #! @Arguments ordtbl, p
 #! @Group CharacterDegreesOfBlocks
 DeclareOperation( "CharacterDegreesOfBlocks",
@@ -127,13 +127,13 @@ DeclareOperation( "CharacterDegreesOfBlocks",
 
 #! @Description
 #!  <#Include Label="CharacterDegreesOfBlocks">
-#! @ReturnValue a list
+#! @Returns a list
 #! @Arguments G, p
 #! @Group CharacterDegreesOfBlocks
 DeclareOperation( "CharacterDegreesOfBlocks",
         [ IsGroup, IsInt ] );
 
-#! @ReturnValue a list
+#! @Returns a list
 #! @Arguments ordtbl, p
 #! @Group BrauerCharacterDegreesOfBlocks
 DeclareOperation( "BrauerCharacterDegreesOfBlocks",
@@ -141,13 +141,13 @@ DeclareOperation( "BrauerCharacterDegreesOfBlocks",
 
 #! @Description
 #!  <#Include Label="BrauerCharacterDegreesOfBlocks">
-#! @ReturnValue a list
+#! @Returns a list
 #! @Arguments G, p
 #! @Group BrauerCharacterDegreesOfBlocks
 DeclareOperation( "BrauerCharacterDegreesOfBlocks",
         [ IsGroup, IsInt ] );
 
-#! @ReturnValue a list
+#! @Returns a list
 #! @Arguments ordtbl, p
 #! @Group CartanMatricesOfBlocks
 DeclareOperation( "CartanMatricesOfBlocks",
@@ -155,13 +155,13 @@ DeclareOperation( "CartanMatricesOfBlocks",
 
 #! @Description
 #!  <#Include Label="CartanMatricesOfBlocks">
-#! @ReturnValue a list
+#! @Returns a list
 #! @Arguments G, p
 #! @Group CartanMatricesOfBlocks
 DeclareOperation( "CartanMatricesOfBlocks",
         [ IsGroup, IsInt ] );
 
-#! @ReturnValue a list
+#! @Returns a list
 #! @Arguments ordtbl, p
 #! @Group CentralCharactersOfBlocks
 DeclareOperation( "CentralCharactersOfBlocks",
@@ -169,7 +169,7 @@ DeclareOperation( "CentralCharactersOfBlocks",
 
 #! @Description
 #!  <#Include Label="CentralCharactersOfBlocks">
-#! @ReturnValue a list
+#! @Returns a list
 #! @Arguments G, p
 #! @Group CentralCharactersOfBlocks
 DeclareOperation( "CentralCharactersOfBlocks",
