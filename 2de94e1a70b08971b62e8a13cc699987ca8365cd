@@ -38,3 +38,8 @@ AutomaticDocumentation/: 98f72ff Merge pull request #1 from sebasguts/master
 
 Versions:
 2012.08.06 which is Sebas' version
+
+Blocks/: 2de94e1 DefiningIdealOfUnitaryGroupOfHead now uses then new feature of GeneralElementsOfFiltration
+
+Versions:
+2013.11.22 which is Mohamed's version
