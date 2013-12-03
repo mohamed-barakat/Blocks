@@ -7,6 +7,7 @@ Subtitle := "Tools for block theory",
 Version := Maximum( [
                    "2013.11.05", ## Mohamed's version
                    ## this line prevents merge conflicts
+                   "2013.12.03", ## Sebas' version
                    ] ),
 
 # this avoids git-merge conflicts
