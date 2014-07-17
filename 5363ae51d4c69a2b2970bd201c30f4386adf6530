@@ -196,3 +196,8 @@ Versions:
 2012.10.23 which is Mohamed's version
 2012.10.22 which is Simon's version
 2012.10.12 which is Sebas' version
+
+PolymakeInterface/: 9f84d28 Makefile.in: use mkdir -p
+
+Versions:
+2014.01.03 which is Sebas' version
