@@ -126,3 +126,8 @@ HomalgToCAS/: 210cd27 HilbertPoincareSeries: hps -> HPs, HilbertPolynomial: hil 
 
 Versions:
  2015.02.03
+
+IO_ForHomalg/: 6ef8f31 improved Subtitle/LongTitle
+
+Versions:
+ 2012.10.24
