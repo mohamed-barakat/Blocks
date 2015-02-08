@@ -39,3 +39,8 @@ AutomaticDocumentation/: 98f72ff Merge pull request #1 from sebasguts/master
 
 Versions:
 2012.08.06 which is Sebas' version
+
+Blocks/: 0d5c84f IsLowerPartExtensionOfAffineSpaces now stores dim
+
+Versions:
+2015.01.15 which is Mohamed's version
