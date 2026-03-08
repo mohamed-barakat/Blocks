@@ -1,8 +1,8 @@
-#############################################################################
-##
-##  init.g                                                    Blocks package
-##
-##  Copyright 2013,      Mohamed Barakat, University of Kaiserslautern
+# SPDX-License-Identifier: GPL-2.0-or-later
+# Blocks: Tools for block theory
+#
+# Reading the declaration part of the package.
+#
 ##
 ##  Reading the declaration part of the Blocks package.
 ##

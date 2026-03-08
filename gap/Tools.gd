@@ -1,12 +1,8 @@
-#############################################################################
-##
-##  Tools.gd                                                  Blocks package
-##
-##  Copyright 2013,      Mohamed Barakat, University of Kaiserslautern
-##
-##  Declaration stuff for tools.
-##
-#############################################################################
+# SPDX-License-Identifier: GPL-2.0-or-later
+# Blocks: Tools for block theory
+#
+# Declarations
+#
 
 #! @Chapter Tools
 
@@ -38,7 +34,9 @@ DeclareOperation( "Coerce",
 #! @Arguments M, c
 DeclareOperation( "Coefficients",
         [ IsHomalgModule, IsElementOfFreeMagmaRing ] );
+#! @InsertChunk Coefficient
 
 #! @Arguments filt, c
 DeclareOperation( "Coefficients",
         [ IsHomalgFiltration, IsElementOfFreeMagmaRing ] );
+#! @InsertChunk Coefficients

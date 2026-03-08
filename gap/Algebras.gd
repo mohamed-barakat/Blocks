@@ -1,12 +1,8 @@
-#############################################################################
-##
-##  Algebras.gd                                               Blocks package
-##
-##  Copyright 2013,      Mohamed Barakat, University of Kaiserslautern
-##
-##  Declaration stuff for algebras.
-##
-#############################################################################
+# SPDX-License-Identifier: GPL-2.0-or-later
+# Blocks: Tools for block theory
+#
+# Declarations
+#
 
 #! @Chapter Algebras
 
@@ -36,7 +32,7 @@ DeclareProperty( "IsDefinedOverInvolutionSplittingField",
 
 #! @Description
 #!  Check if the algebra <A>A</A> of characteristic <M>2</M> is defined over a special splitting field
-#!  (&see; <Ref Attr="SpecialSplittingField"/>).
+#!  (see <Ref Attr="SpecialSplittingField"/>).
 #! @Arguments A
 #! @Label for IsAlgebra
 DeclareProperty( "IsDefinedOverSpecialSplittingField",

@@ -1,12 +1,8 @@
-#############################################################################
-##
-##  TableBlocks.gd                                            Blocks package
-##
-##  Copyright 2013,      Mohamed Barakat, University of Kaiserslautern
-##
-##  Declarations for table blocks.
-##
-#############################################################################
+# SPDX-License-Identifier: GPL-2.0-or-later
+# Blocks: Tools for block theory
+#
+# Declarations
+#
 
 #! @Chapter Table blocks
 

@@ -1,12 +1,8 @@
-#############################################################################
-##
-##  Blocks.gd                                                 Blocks package
-##
-##  Copyright 2013,      Mohamed Barakat, University of Kaiserslautern
-##
-##  Declaration stuff for blocks.
-##
-#############################################################################
+# SPDX-License-Identifier: GPL-2.0-or-later
+# Blocks: Tools for block theory
+#
+# Declarations
+#
 
 #! @Chapter Blocks
 
@@ -59,7 +55,7 @@ DeclareProperty( "IsSpecial",
 
 #! @Description
 #!  Construct the group ring of <A>G</A> over the special splitting field
-#!  of characteristic <M>2</M> (&see; <Ref Attr="SpecialSplittingField"/>).
+#!  of characteristic <M>2</M> (see <Ref Attr="SpecialSplittingField"/>).
 #! @Arguments G
 #! @Returns a group ring
 #! @Label for IsGroup, IsInt
@@ -188,7 +184,6 @@ DeclareAttribute( "AssociatedProjection",
 #! @Group Defect
 DeclareAttribute( "Defect",
         IsElementOfFreeMagmaRing );
-#! @InsertChunk Defect
 
 #! @Arguments B
 #! @Group Defect
@@ -307,7 +302,6 @@ DeclareAttribute( "CartanMatrix",
 #! @Group DefectClasses
 DeclareAttribute( "DefectClasses",
         IsElementOfFreeMagmaRing );
-#! @InsertChunk DefectClasses
 
 #! @Arguments B
 #! @Group DefectClasses

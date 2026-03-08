@@ -1,13 +1,10 @@
-#############################################################################
-##
-##  Algebras.gi                                               Blocks package
-##
-##  Copyright 2013,      Mohamed Barakat, University of Kaiserslautern
-##
-##  Implementation stuff for algebras.
-##
-#############################################################################
+# SPDX-License-Identifier: GPL-2.0-or-later
+# Blocks: Tools for block theory
+#
+# Implementations
+#
 
+##
 InstallValue( LogicalImplicationsForInvolutiveAlgebras,
         [
          
@@ -533,7 +530,7 @@ InstallMethod( InducedFiltration,
     J := L[1];
     
     M := UnderlyingModule( F, J );
-    OnOriginalPresentation( M );	## is necessary
+    OnOriginalPresentation( M ); ## is necessary
     
     n := Rank( M );
     

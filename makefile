@@ -1,38 +1,57 @@
+# make sure gap --quitonbreak fails even if it is part of a pipe
+SHELL=/bin/bash -o pipefail
+
 all: doc test
 
 doc: doc/manual.six
 
 doc/manual.six: makedoc.g \
 		PackageInfo.g \
-		doc/Intros.autodoc \
-		doc/Blocks.bib \
-		gap/*.gd gap/*.gi examples/*.g examples/doc/*.g
-	        gap makedoc.g
+		$(wildcard doc/*.autodoc gap/*.gd gap/*.gi examples/*.g examples/*/*.g)
+			gap --quitonbreak makedoc.g
 
 clean:
 	(cd doc ; ./clean)
 
-test:	doc
-	gap maketest.g
+test: doc
+	gap tst/testall.g
 
-archive: test
-	(mkdir -p ../tar; cd ..; tar czvf tar/Blocks.tar.gz --exclude ".DS_Store" --exclude "*~" Blocks/doc/*.* Blocks/doc/clean Blocks/gap/*.{gi,gd} Blocks/{PackageInfo.g,README,COPYING,VERSION,init.g,read.g,makedoc.g,makefile,maketest.g} Blocks/examples/*.g Blocks/examples/doc/*.g)
+test-basic-spacing:
+	# exit code 1 means no match, which is what we want here (exit code 2 signals an error)
+	grep -RPl "\t" examples/ gap/; test $$? -eq 1 || (echo "Tabs found" && exit 1)
+	grep -RPl "\r" examples/ gap/; test $$? -eq 1 || (echo "Windows line-endings found" && exit 1)
+	grep -RPzL "\n\z" examples/ gap/ | grep ""; test $$? -eq 1 || (echo "File with no newline at end of file found" && exit 1)
 
-WEBPOS=public_html
-WEBPOS_FINAL=~/Sites/homalg-project/Blocks
+test-doc: doc
+	cp -aT doc/ doc_tmp/
+	cd doc_tmp && ./clean
+	gap --quitonbreak makedoc_with_overfull_hbox_warnings.g | perl -pe 'END { exit $$status } $$status=1 if /#W/;'
 
-towww: archive
-	echo '<?xml version="1.0" encoding="UTF-8"?>' >${WEBPOS}.version
-	echo '<mixer>' >>${WEBPOS}.version
-	cat VERSION >>${WEBPOS}.version
-	echo '</mixer>' >>${WEBPOS}.version
-	cp PackageInfo.g ${WEBPOS}
-	cp README ${WEBPOS}/README.Blocks
-	cp doc/manual.pdf ${WEBPOS}/Blocks.pdf
-	cp doc/*.{css,html} ${WEBPOS}
-	rm -f ${WEBPOS}/*.tar.gz
-	mv ../tar/Blocks.tar.gz ${WEBPOS}/Blocks-`cat VERSION`.tar.gz
-	rm -f ${WEBPOS_FINAL}/*.tar.gz
-	cp ${WEBPOS}/* ${WEBPOS_FINAL}
-	ln -s Blocks-`cat VERSION`.tar.gz ${WEBPOS_FINAL}/Blocks.tar.gz
+test-with-coverage: doc
+	gap --quitonbreak --cover stats tst/testall.g
+	gap --quitonbreak --norepl -c 'LoadPackage("profiling"); OutputJsonCoverage("stats", "coverage.json");'
 
+test-spacing:
+	# exit code 1 means no match, which is what we want here (exit code 2 signals an error)
+	grep -R "[^ [\"]  " gap/*.gi; test $$? -eq 1 || (echo "Duplicate spaces found" && exit 1)
+	grep -RE '[^ ] +$$' gap/*; test $$? -eq 1 || (echo "Trailing whitespace found" && exit 1)
+	for filename in gap/*; do \
+		echo $$filename; \
+		gap --quitonbreak --norepl --banner -c "LoadPackage(\"Blocks\"); SizeScreen([4096]); func := ReadAsFunction(\"$$filename\"); FileString(\"gap_spacing\", DisplayString(func));"; \
+		# In a perfect world, the DisplayString of a function would exactly match our code. However, our line breaks and indentation might differ from the GAP ones, \
+		# so we remove all indentation, line breaks, and empty lines, and afterwards insert line breaks at semicolons again for better readability. \
+		cat "gap_spacing" | tail -n +2 | head -n -2 | sed 's/\[  \]/[ ]/g' | sed 's/(  )/( )/g' | sed 's/(  :/( :/g' | sed 's/ *$$//' | sed 's/^ *//' | grep -v "^$$" | tr "\n" " " | sed 's/;/;\n/g' > modified_gap_spacing; \
+		cat "$$filename" | grep -v "^ *[#]" | sed 's/^ *//' | grep -v "^$$" | tr "\n" " " | sed "s/;/;\n/g" > modified_custom_spacing; \
+		# Our code might still differ from the GAP code, for example because of additional brackets. \
+		# Thus, we diff the code once as expected and once ignoring all space. Diffing the two diffs then shows lines which only differ by spacing. \
+		diff modified_gap_spacing modified_custom_spacing > spacing_diff; \
+		diff modified_gap_spacing modified_custom_spacing --ignore-all-space --ignore-space-change --ignore-trailing-space --ignore-blank-lines > spacing_diff_no_blanks; \
+		diff spacing_diff_no_blanks spacing_diff || exit; \
+	done
+	rm gap_spacing
+	rm modified_gap_spacing
+	rm modified_custom_spacing
+	rm spacing_diff
+	rm spacing_diff_no_blanks
+
+ci-test: test-basic-spacing test-with-coverage

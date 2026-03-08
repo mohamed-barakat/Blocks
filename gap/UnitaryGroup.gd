@@ -1,12 +1,8 @@
-#############################################################################
-##
-##  UnitaryGroup.gd                                           Blocks package
-##
-##  Copyright 2013,      Mohamed Barakat, University of Kaiserslautern
-##
-##  Declaration stuff for unitary groups.
-##
-#############################################################################
+# SPDX-License-Identifier: GPL-2.0-or-later
+# Blocks: Tools for block theory
+#
+# Declarations
+#
 
 #! @Chapter Unitary groups
 

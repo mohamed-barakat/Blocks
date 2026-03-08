@@ -1,21 +1,19 @@
+# SPDX-License-Identifier: GPL-2.0-or-later
+# Blocks: Tools for block theory
+#
+# This file contains package meta data. For additional information on
+# the meaning and correct usage of these fields, please consult the
+# manual of the "Example" package as well as the comments in its
+# PackageInfo.g file.
+#
 SetPackageInfo( rec(
 
 PackageName := "Blocks",
-
 Subtitle := "Tools for block theory",
+Version := "2026.03-01",
 
-Version := Maximum( [
-                   "2020.01.01", ## Mohamed's version
-                   ## this line prevents merge conflicts
-                   ] ),
-
-# this avoids git-merge conflicts
-Date := ~.Version{[ 1 .. 10 ]},
-Date := Concatenation( ~.Date{[ 9, 10 ]}, "/", ~.Date{[ 6, 7 ]}, "/", ~.Date{[ 1 .. 4 ]} ),
-
-ArchiveURL := Concatenation( "http://homalg.math.rwth-aachen.de/~barakat/homalg-project/Blocks-", ~.Version ),
-
-ArchiveFormats := ".tar.gz",
+Date := (function ( ) if IsBound( GAPInfo.SystemEnvironment.GAP_PKG_RELEASE_DATE ) then return GAPInfo.SystemEnvironment.GAP_PKG_RELEASE_DATE; else return Concatenation( ~.Version{[ 1 .. 4 ]}, "-", ~.Version{[ 6, 7 ]}, "-01" ); fi; end)( ),
+License := "GPL-2.0-or-later",
 
 Persons := [
   rec( 
@@ -36,12 +34,31 @@ Persons := [
   
 ],
 
+# BEGIN URLS
+SourceRepository := rec(
+    Type := "git",
+    URL := "https://github.com/homalg-project/Blocks",
+),
+IssueTrackerURL := Concatenation( ~.SourceRepository.URL, "/issues" ),
+PackageWWWHome  := "https://homalg-project.github.io/pkg/Blocks",
+PackageInfoURL  := "https://homalg-project.github.io/Blocks/PackageInfo.g",
+README_URL      := "https://homalg-project.github.io/Blocks/README.md",
+ArchiveURL      := Concatenation( "https://github.com/homalg-project/Blocks/releases/download/v", ~.Version, "/Blocks-", ~.Version ),
+# END URLS
+
+ArchiveFormats := ".tar.gz .zip",
+
+##  Status information. Currently the following cases are recognized:
+##    "accepted"      for successfully refereed packages
+##    "submitted"     for packages submitted for the refereeing
+##    "deposited"     for packages for which the GAP developers agreed
+##                    to distribute them with the core GAP system
+##    "dev"           for development versions of packages
+##    "other"         for all other packages
+##
 Status := "dev",
 
-README_URL := 
-  "http://homalg.math.rwth-aachen.de/~barakat/homalg-project/Blocks/README.Blocks",
-PackageInfoURL := 
-  "http://homalg.math.rwth-aachen.de/~barakat/homalg-project/Blocks/PackageInfo.g",
+AbstractHTML   :=  "",
 
 PackageDoc := rec(
   BookName  := "Blocks",
@@ -53,9 +70,8 @@ PackageDoc := rec(
 ),
 
 Dependencies := rec(
-  GAP := ">=4.4",
+  GAP := ">= 4.13.0",
   NeededOtherPackages := [
-                   [ "AutoDoc", ">= 2013.12.04" ],
                    [ "homalg", ">= 2013.09.03" ],
                    [ "Modules", ">= 2015.01.13" ],
                    [ "RingsForHomalg", ">= 2013.08.22" ],
@@ -63,7 +79,6 @@ Dependencies := rec(
                    [ "MatricesForHomalg", ">= 2013.10.27" ],
                    [ "ctblocks", ">= 0.9.1" ],
                    [ "LAGUNA", ">= 3.6.3" ],
-                   [ "GAPDoc", ">= 1.1" ]
                    ],
   SuggestedOtherPackages := [ ],
   ExternalConditions := [ ]
@@ -71,6 +86,8 @@ Dependencies := rec(
 
 AvailabilityTest := ReturnTrue,
 
-Keywords := [ "block", "defect group" ]
+Keywords := [ "block", "defect group" ],
+
+TestFile := "tst/testall.g",
 
 ));

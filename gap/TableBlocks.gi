@@ -1,13 +1,10 @@
-#############################################################################
-##
-##  TableBlocks.gi                                            Blocks package
-##
-##  Copyright 2013,      Mohamed Barakat, University of Kaiserslautern
-##
-##  Implementations for table blocks.
-##
-#############################################################################
+# SPDX-License-Identifier: GPL-2.0-or-later
+# Blocks: Tools for block theory
+#
+# Implementations
+#
 
+##
 InstallValue( LogicalImplicationsForTableBlocks,
         [
          

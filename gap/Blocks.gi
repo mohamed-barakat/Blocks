@@ -1,12 +1,8 @@
-#############################################################################
-##
-##  Blocks.gi                                                 Blocks package
-##
-##  Copyright 2013,      Mohamed Barakat, University of Kaiserslautern
-##
-##  Implementation stuff for blocks.
-##
-#############################################################################
+# SPDX-License-Identifier: GPL-2.0-or-later
+# Blocks: Tools for block theory
+#
+# Implementations
+#
 
 ####################################
 #
